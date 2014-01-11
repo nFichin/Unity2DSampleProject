@@ -16,12 +16,7 @@ public class PlayerControl : MonoBehaviour
 	public AudioClip[] taunts;				// Array of clips for when the player taunts.
 	public float tauntProbability = 50f;	// Chance of a taunt happening.
 	public float tauntDelay = 1f;			// Delay for when the taunt should happen.
-
-	public GameObject[] layers;				//array with the level layers
-	public int currentLayer = 0;			//index of current layer
-	public GameObject mainCamera;
-
-
+	
 	private int tauntIndex;					// The index of the taunts array indicating the most recent taunt.
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
 	private bool grounded = false;			// Whether or not the player is grounded.
@@ -44,19 +39,6 @@ public class PlayerControl : MonoBehaviour
 		// If the jump button is pressed and the player is grounded then the player should jump.
 		if(Input.GetButtonDown("Jump") && grounded){
 			jump = true;
-		}
-		else if( Input.GetButton("ChangeLayer") ){
-			if(currentLayer == 0){
-				transform.position = new Vector3(transform.position.x,
-				                       transform.position.y,
-				                       layers[1].transform.position.z);
-				currentLayer = 1;
-			}else{
-				transform.position = new Vector3(transform.position.x,
-				                       transform.position.y,
-				                       layers[0].transform.position.z);
-				currentLayer = 0;
-			}
 		}
 	}
 
